@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  lang="ko"   >
+ <head>
+  <meta   charset="utf-8">
+  <title> TMPT</title>
+	<style>
+		*{  margin:0; padding:0; }     li{ list-style-type:none; }
+		body{  font-family:"Malgun Gothic" , dotum , sans-serif; font-size:90%;  background-color:#eee; color:#000;}
+		a:link, a:visited{  color:#000;   text-decoration:none; }
+		a:hover, a:focus{  color:#f00;   text-decoration:underline; }
+
+
+		.basic{   width:80%; margin:50px auto;  padding:50px;  background-color:white;  border-top:5px solid #ddd; }
+		h3{  text-transform:uppercase;    text-indent:1em;  border-left:10px  solid darkgoldenrod;  margin:10px 0; }
+		form{  width:80%; margin:0 auto; }
+		fieldset{  border:0 none; }
+		legend{ position:absolute; left:-9999px; font-size:0; line-height:0;  width:1px; height:1px; overflow:hidden;}
+		p{  margin:10px 0; }
+		label{  display:inline-block; width:15%; color:white;  background-color:crimson; margin-right:2%; }
+		label, input{  vertical-align:middle; }
+		input[type="submit"]{   padding:1%; color:white; background-color:#555;  border:0 none; }
+	</style>
+ 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script>
+	     // 1) 반복되는 것  if(){   }
+		 // 2) 변하는 데이터(변수) : "#userid" "#userpass" / "아이디가" "비밀번호가"
+         // 3) 변수의 패턴 for(시작;종료;변화)
+
+		 $(function(){
+			$("#submitbtn").submit(function(){
+				var loginid = ["#userid", "#userpass"];
+				var loginiddata = ["아이디가", "비밀번호가"];
+				for(var index=0; index<2; index++)//초기.종료.변화
+				{  // 1 여기서부터 반복
+				if( $( loginid[index] ).val() == "")// loginid[0]
+				{   alert( loginiddata[index] + "빈칸입니다.\n확인해주세요");  
+				    $(loginid[index]).focus();   return false;   }
+			     } // 1여기까지
+			});
+		  });
+
+		 /*
+		  $(function(){
+			$("#submitbtn").submit(function(){
+				if( $(loginid[0]).val() == "")
+				{   alert( loginiddata[0] + "빈칸입니다.\n확인해주세요");       $(loginid[0]).focus();   return false;   }
+
+				if( $(loginid[1]).val() == "")
+				{   alert(  loginiddata[1] + "빈칸입니다.\n확인해주세요");       $(loginid[1]).focus();   return false;   }
+			});
+		  });
+		  */
+	  </script>
+ </head>
+
+ <body>
+	<div class="basic">
+		<h3>로그인 유효성검사규칙</h3>
+		<form  action="http://www.naver.com"  method="post"    id="submitbtn">
+			<fieldset>
+			<legend>로그인</legend>
+			  <p><label for="userid">ID</label><input type="text"  id="userid" name="userid"/></p>
+			  <p><label for="userpass">PASS</label><input type="password" id="userpass" name="userpass"/></p>
+			  <p><input type="submit"  value="전송"/></p>
+			</fieldset>
+		</form>
+	</div>
+ </body>
+</html>
+<!--  
+	능력단위 : 수정보완
+	학습내용 : 매체기능적 요소 수정보완하기
+	1) HTML : form  2) CSS   3) 유효성검사규칙 : 빈칸유무검사
+-->

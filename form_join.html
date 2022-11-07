@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html  lang="ko"   >
+ <head>
+  <meta   charset="utf-8">
+  <title> TMPT</title>
+	<style>
+		*{  margin:0; padding:0; }     li{ list-style-type:none; }
+		body{  font-family:"Malgun Gothic" , dotum , sans-serif; font-size:90%;  background-color:#eee; color:#000;}
+		a:link, a:visited{  color:#000;   text-decoration:none; }
+		a:hover, a:focus{  color:#f00;   text-decoration:underline; }
+
+
+		.basic{   width:80%; margin:50px auto;  padding:50px;  background-color:white;  border-top:5px solid #ddd; }
+		h3{  text-transform:uppercase;    text-indent:1em;  border-left:10px  solid darkgoldenrod;  margin:10px 0; }
+
+		.hidden{  position:absolute; left:-9999px;  }
+
+		form{   width:100%; }
+		fieldset{  border:0 none; margin:50px 0;  }
+		legend{ font-weight:bold;  text-indent:1em;   margin-bottom: 20px; border-left:10px solid crimson;  }
+		form p{   text-align:left; width: 97%;  margin: 0;	padding: 10px;	background-color: #fff;	border: 1px solid #ddd;	border-bottom: none; }
+		form p.center{  text-align:center; }
+
+
+		.required{  color:crimson; }
+		label {  display:inline-block; 	text-align: left;  width:12%;    text-transform: uppercase;   }
+		input{	  width:24%;   background-color:white;  }
+		input[type='text']  ,  input[type='password']  ,   input[type='email'] 
+		{   width: 25%;    padding: 3px 8px;    background-color: #efece7;    border: 1px solid #a19197;   line-height: 20px; }
+		input[type='button'] , input[type="submit"]{   width:15%; padding:5px;  background-color:crimson;  border-radius:20px;  border:0 none;  color:white;  margin:0 5px; } 
+		
+		input[type='radio']  ,  input[type='checkbox']{  width:7%; } 
+		.br_bottom{  border-bottom:1px solid #eee;}
+
+		.addinfo_title{  display:inline-block; width:12%;   }
+		.addinfo_desc{ display:inline-block; width:20%;}
+
+		#useraddress , #useraddress2{   width:80%;  }
+		#useraddress2{  margin:1% 12.5%;}
+		
+		ul{  text-align:right; margin:50px 0; }
+		ul li{  display:inline;}
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+$(function(){ 
+	$("#joinform").submit(function(){
+
+		var joinid = ["#userid", "#userpass", "#userpassre", "#useremail", "#userphone", "#userphone2",
+		"#userphone3", "#post1", "#post2", "#useraddress", "#useraddress2" ];
+		var joiniddata = ["아이디가", "비밀번호가", "비밀번호 확인칸이", "이메일이", "연락처 첫번째 칸이", "연락처 두번째 칸이",
+		"연락처 세번째 칸이" ,"우편번호 첫번째 칸이", "우편번호 두번째 칸이", "상세주소 첫번째칸이","상세주소 두번째칸이"];
+		for(var index=0; index<12; index++)
+				{  
+				if( $( joinid[index] ).val() == "")
+				{   alert( joiniddata[index] + "빈칸입니다.\n확인해주세요");  
+				    $(joinid[index]).focus();   return false;   }
+				}
+	        });
+     	});
+		/*
+		// 1. 아이디	
+		 if(  $("#userid").val() == "" ){  alert("아이디가 빈칸입니다.\n확인해 주세요"); $("#userid").focus(); 	return false;  }
+
+		// 2. 비밀번호 빈칸확인
+		 if(  $("#userpass").val() == "" ){  	alert("비밀번호가 빈칸입니다.\n확인해 주세요"); 	$("#userpass").focus();	return false; }
+
+		// 3. 비밀번호 확인칸이 빈칸인지 확인
+		if(  $("#userpassre").val() == "" ){ alert("비밀번호 확인칸이 빈칸입니다.\n확인해 주세요"); $("#userpassre").focus(); return false; }
+
+		// 4. 이메일이 빈칸인지 확인
+		if(  $("#useremail").val() == "" ){  alert("이메일이 빈칸입니다.\n확인해 주세요"); $("#useremail").focus(); 	return false;  }
+
+		if( $("#userphone").val() == "" ){   
+				alert("연락처 첫번째 칸이 빈칸입니다. \n확인해주세요");  $("#userphone").focus();  	return false; 
+		}
+		if( $("#userphone2").val() == "" ){   
+				alert("연락처 두번째 칸이 빈칸입니다. \n확인해주세요");  $("#userphone2").focus();  	return false; 
+		}
+		if( $("#userphone3").val() == "" ){   
+				alert("연락처 세번째 칸이  빈칸입니다. \n확인해주세요");  $("#userphone3").focus();  	return false; 
+		}
+		if( $("#post1").val() == "" ){   
+				alert("우편번호 첫번째 칸이 빈칸입니다. \n확인해주세요");  $("#post1").focus();  	return false; 
+		}
+		if( $("#post2").val() == "" ){   
+				alert("우편번호 두번째 칸이  빈칸입니다. \n확인해주세요");  $("#post2").focus();  	return false; 
+		}
+		if( $("#useraddress").val() == "" ){   
+				alert("상세주소 첫번째칸이 빈칸입니다. \n확인해주세요");  $("#useraddress").focus();  	return false; 
+		}
+		if( $("#useraddress2").val() == "" ){   
+				alert("상세주소 두번째칸이 빈칸입니다. \n확인해주세요");  $("#useraddress2").focus();  	return false; 
+		}	
+	});
+});
+*/
+
+		//1. 각칸들 빈칸유무성검사 - 빈칸이라면  **칸이 빈칸입니다확인해주세요 알림창 / 커서가게 만들기 - check
+		//2. 아이디가 8자 미만이라면 아이디는 8자이상입니다 알림창. / 커서가게 만들기
+		//3. 비밀번호가 8~15자사이가아니라면  **칸이 빈칸입니다확인해주세요 알림창 / 데이터 지우기/커서
+		//4. 비밀번호와 비밀번호 확인이 다르다면    == 같다 /   != 다르다
+		// 비밀번호와 비밀번호확인이 다릅니다 알림창// 비밀번호 칸에 커서가게 만들기
+		//5. 이메일에 @가 없다면 이메일을 확인해주세요 / 알림창/ 커서가게 만들기
+
+		//6. 주소에 우편번호검색이 가능하게 만들기  - check
+	</script>
+ </head>
+ <body>
+	<div class="basic">
+			<h3>JOIN</h3>
+			<div class="subcontent  subtop">
+				<h1  class="hidden">회원가입</h1>
+				<p> <strong class="required">(*)</strong>은 필수입력사항입니다. </p>
+				<form  action="#"  method="post"   id="joinform">
+					<fieldset  class="joinfield jf1">
+					<legend >필수 입력 정보</legend>
+						<p>
+							<label for="userid"><strong class="required">(*)</strong>아이디</label> 
+							<input type="text" name="userid" id="userid"  ><span>(아이디는 영문, 숫자 4~15자리)</span>
+						</p>
+						<p>
+							<label for="userpass"><strong class="required">(*)</strong> 비밀번호 </label> 
+							<input type="password" name="userpass" id="userpass"       >
+							<span>(영문, 숫자 조합 10~20자리)</span>
+						</p>
+						<p>
+							<label for="userpassre"><strong class="required">(*)</strong> 비밀번호 확인</label> 
+							<input type="password" name="userpassre" id="userpassre"       >
+						</p>
+						<p><!-- select -->
+							<label for="useremail"><strong class="required">(*)</strong> 이메일</label> 
+							<input type="text" name="useremail" id="useremail"       >
+						</p>
+						<p><!-- select -->
+							<label for="userphone">핸드폰</label>
+							<input type="text" id="userphone" name="userphone">-<input type="text" id="userphone2" name="userphone2">-<input type="text" id="userphone3" name="userphone3">
+						</p>
+						<p><label for="post1">우편번호</label>
+							<input type="text" id="post1" name="post1">-<input type="text" id="post2" name="post2"> <input type="button" value="우편번호검색" id="postcode">
+						</p>
+						<p  class="br_bottom">
+							<label for="useraddress">상세주소</label>
+							<input type="text" id="useraddress" name="useraddress"><input type="text" id="useraddress2" name="useraddress2">
+						</p>
+						<ul>
+							<li><input type="button" value="이전" /></li>
+							<li><input type="submit" value="확인" /></li>
+						</ul>
+					</fieldset> <!-- 필수 입력 정보  -->
+				</form>
+			</div>
+	</div> <!--  submain END  -->
+ </body>
+</html>
+
